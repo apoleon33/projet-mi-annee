@@ -20,7 +20,7 @@ for child in root[0]:                   #positionement dans le fichié xml a la 
         if 'name' in child.attrib : 
             print(child.attrib.get('name'), " | ", child.attrib.get("id"))      #lecture d'une valeur specifique
 
-            Cell = Cells()
+            Cell = Cells()                                                      #creation des cellules
             Cell.Title = child.attrib.get('name')
             Cell.ID = child.attrib.get('id')
             liste_class.append(Cell)
@@ -30,7 +30,7 @@ for child in root[0]:                   #positionement dans le fichié xml a la 
         if 'sourceRef' in child.attrib:
             print("Source fleche : ", child.attrib.get('sourceRef'), "| Target Fleche: ", child.attrib.get('targetRef'))
             
-            for i in range(len(liste_class)):
+            for i in range(len(liste_class)):                              #boucle de comparaison pour trié les fleche
                 if liste_class[i].ID == child.attrib.get('sourceRef'):
                     liste_class[i].Target.append(child.attrib.get('targetRef'))
 
