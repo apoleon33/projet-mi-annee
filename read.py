@@ -55,4 +55,14 @@ def read_title(data):          #read Cells datas
 
     return([type,content])
 
+
+def cell_fetch(id,list):
+    for i in range(len(list)):
+        if id == list[i].ID :
+            return list[i]
+    return 0
+
+
+
+
 data = readXML('test-format-2.xml')
