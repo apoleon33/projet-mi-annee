@@ -28,7 +28,7 @@ def readXML(data):
 
             cell_title = read_title(child.attrib.get('name'))            #call func read_title to split the variables
             Cell.Type = cell_title[0]
-            Cell.Content = cell_title[1]
+            Cell.Content = cell_title[1]                                  # ajout du type et du contenue
 
             Cell.ID = child.attrib.get('id')                              #ajout ID
             liste_class.append(Cell)
