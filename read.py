@@ -30,7 +30,7 @@ def readXML(data):
             Cell.Type = cell_title[0]
             Cell.Content = cell_title[1]
 
-            Cell.ID = child.attrib.get('id')
+            Cell.ID = child.attrib.get('id')                              #ajout ID
             liste_class.append(Cell)
         
         
