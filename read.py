@@ -28,7 +28,7 @@ def readXML(data):
 
             cell_title = read_title(child.attrib.get('name'))            #call func read_title to split the variables
             Cell.Type = cell_title[0]
-            Cell.Content = cell_title[1]
+            Cell.Content = cell_title[1]                                  # ajout du type et du contenue
 
             Cell.ID = child.attrib.get('id')                              #ajout ID
             liste_class.append(Cell)
@@ -55,4 +55,4 @@ def read_title(data):          #read Cells datas
 
     return([type,content])
 
-data = readXML('test-format.xml')
+data = readXML('test-format-2.xml')
