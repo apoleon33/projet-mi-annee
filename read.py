@@ -19,7 +19,7 @@ def readXML(data):
     liste_class = []
 
 
-    for child in root[0]:                   #positionement dans le fichié xml a la 3eme balise
+    for child in root[0]:                   #positionement dans le fichié xml a la bonne balise
 
         if 'name' in child.attrib : 
             #print(child.attrib.get('name'), " | ", child.attrib.get("id"))      #lecture d'une valeur specifique
