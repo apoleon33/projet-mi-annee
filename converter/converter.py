@@ -8,7 +8,7 @@ class Converter:
     La classe `Converter` est celle qui va faire le gros du travail de conversion entre son entrée et sa sortie en code.
     """
 
-    def __init__(self, entries: list[SingleEntry]):
+    def __init__(self, entries: list[SingleEntry]) -> None:
         self.entries = entries
         self.code = Code()
 
