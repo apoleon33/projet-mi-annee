@@ -55,4 +55,4 @@ def read_title(data):          #read Cells datas
 
     return([type,content])
 
-data = readXML('diagramme-test(1).xml')
+data = readXML('test-format.xml')
