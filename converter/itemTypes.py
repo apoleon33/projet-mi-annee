@@ -8,7 +8,7 @@ class ItemTypes(Enum):
     NP = "NP"  # Nom/prénom
     date = "date"  # jj / mm / aaaa
     titre = "Titre"  # titre
-    lieu = "lieu"  # place
+    lieu = "Lieu"  # place
     dsc = "dsc"  # description
-    freq = "Frequ"  # Fréquence
+    freq = "freq"  # Fréquence
     IMP = "IMP"  # importance(niveau 1 - 2 - 3 - 4)
