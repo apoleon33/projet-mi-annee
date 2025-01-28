@@ -1,31 +1,21 @@
 from typing import TextIO
 
-class SingleEntry:
-    def __init__(self):
-        pass
+from converter.singleEntry import SingleEntry
 
-class ObjectEntry:
-    """
-    Il s'agit de la classe chargée de gérer ce qui va provenir de l'xml
-    """
-    def __init__(self) -> None:
-        self.entries = []
-
-    def appendEntry(self, entry) -> None:
-        self.entries.append(entry)
 
 class Converter:
     """
     La classe `Converter` est celle qui va faire le gros du travail de conversion entre son entrée et sa sortie en code.
     """
 
-    def __init__(self, objectEntry: ObjectEntry):
-        self.objectEntry = objectEntry
+    def __init__(self, entries: list[SingleEntry]):
+        self.entries = entries
         self.code = Code()
 
     def convert(self) -> None:
         # On aura la logique ici
         pass
+
 
 class Code:
     """
