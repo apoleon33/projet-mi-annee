@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="code.css">        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Récapitulatif d'aujourd'hui</title>
+    <script type="text/javascript" src="/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=9osc6Sy6clB8xgfjOkU9z9ruOzwC4l6adsZrUp5NUxUCTjNBXyF7gyzcpZ158fPt4d_YDYGbQccA4Ho76AGMsK3lhhZjVwHQ9xA2QDvKKwcwd-9bwo7bQ7yGwgpInJYKFXn2OsAm4zYmw6WJJ-JTqrtkqRjllrG5xdLZvJwRUGVP2OuN3TF8sBG-GheQIPtLem3ttgw9bCnUi9R2IEQQg9I53q1BRtW35QJizrKoozplB_mm0i8kmB7XoCKrRSWdJxiMbGzPh7bgxmhsa9zNIg" charset="UTF-8"></script></head>
+
+    <body>
+        <div id="mainContainer">
+            <section id="cld">
+                <section id="enteteCld">
+                    <h1 id="cldT">JANVIER</h1>
+                    <section id="avantETapres">
+                        <button id="avant" class="cldBtn">◄</button>
+                        <button id="apres" class="cldBtn">►</button>
+                    </section>
+                </section>
+      
+
+                <section id="cldBoite">
+                    <div id="jours">
+                        <div class="jour">lun</div>
+                        <div class="jour">mar</div>
+                        <div class="jour">mer</div>
+                        <div class="jour">jeu</div>
+                        <div class="jour">ven</div>
+                        <div class="jour">sam</div>
+                        <div class="jour">dim</div>
+                    </div>
+
+                <div id="semaine1" class="semaine">
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                </div>
+
+                <div id="semaine2" class="semaine">
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                </div>
+
+                <div id="semaine3" class="semaine">
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                </div>
+
+                <div id="semaine4" class="semaine">
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                </div>
+
+                <div id="semaine5" class="semaine">
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                </div>
+
+                <div id="semaine6" class="semaine">
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                    <div class="case"></div>
+                </div>
+            </section>
+        </section>
+        
+
+        <div id="eventsContainer">
+            <h2>Événements à venir</h2>
+
+            <div id="tableContainer">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <label for="colCount">Nombre de colonnes :</label>
+                    <input type="number" id="colCount" value="3" min="1" max="10" style="width: 60px;">
+
+                    <button id="updateTable">Mettre à jour le tableau</button>
+                </div>
+
+                <table id="dynamicTable">
+                    <thead>
+                        <tr id="headerRow"></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="dataRow"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="code.js"></script>
+        </div>
+        <div id="eventList"></div>
+    </body>
+</html>
