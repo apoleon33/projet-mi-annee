@@ -4,6 +4,8 @@ import xml.etree.ElementTree as ET
 
 
 
+
+
 class Cells:
     Type = 0
     Content = 0
@@ -68,6 +70,7 @@ def cell_fetch(id,list):               #algo de recherche de cellules avec une I
 
 def traduction(data):
     dir_path = os.path.dirname(os.path.realpath(__file__))
+    group_freq = 0
     try:
         os.makedirs(dir_path+"/mydirectory")
     except FileExistsError:
@@ -92,14 +95,21 @@ def traduction(data):
         for y in range(len(liste_titre[0])-1):
          if liste_titre[i][y+1][0] == 'date':
             edited_code = edited_code +"'"+ liste_titre[i][y+1][1]+"'" + ":[{lieu:"
+            date = liste_titre[i][y+1][1]
         for y in range(len(liste_titre[0]) - 1):
          if liste_titre[i][y+1][0] == 'Lieu':
             edited_code = edited_code + "'"+ liste_titre[i][y+1][1] +"'"+ ",activite:"
+            lieu = liste_titre[i][y+1][1]
         for y in range(len(liste_titre[0]) - 1):
          if liste_titre[i][y+1][0] == 'dsc':
-            edited_code = edited_code +"'"+ liste_titre[i][y+1][1] +"'"+ "}]"
-        if i != len(liste_titre)-1:
-            edited_code = edited_code + ","
+            edited_code = edited_code +"'"+ liste_titre[i][y+1][1] +"'"+ ",freq:"
+            dsc = liste_titre[i][y+1][1]
+        for y in range(len(liste_titre[0]) - 1):
+         if liste_titre[i][y+1][0] == 'freq':
+
+            edited_code = edited_code + "'" + str(group_freq) + "'" + "}],"
+            edited_code = freq_function(liste_titre[i][y+1][1], edited_code, date, lieu, dsc, group_freq)
+            group_freq = group_freq + 1
 
     edited_code = edited_code + "}"
 
@@ -114,6 +124,43 @@ def traduction(data):
         file.writelines(data2)
 
 
-data = readXML('test-format-2(1).xml')
+
+def freq_function(freq, edited_code, date, lieu, desc, group_freq):
+    print(freq)
+    freq = freq.split("-")  # split the data
+    N = freq[0].strip()  # .split() delete the space at the start/end if the str
+    j_s_m= freq[1].strip()
+
+    date = date.split("-")  # split the data
+
+
+    if j_s_m == 's':
+
+
+        for i in range(int(N)):
+            print(date)
+            date[2] = int(date[2]) + 7
+            if int(date[2]) > 31:
+                date[1] = int(date[1]) + 1
+                date[2] = int(date[2]) - 31
+            if int(date[2]) < 10:
+                date[2] = str("0") + str(date[2])
+            if int(date[1]) <10:
+                date[1] = str("0") + str(int(date[1]))
+
+
+            edited_code = edited_code + "'" + str(date[0]) + "-" + str(date[1]) + "-"+ str(date[2]) + "'" + ":[{lieu:"
+            edited_code = edited_code + "'" + lieu + "'" + ",activite:"
+            edited_code = edited_code + "'" + desc + "'" + ",freq:"
+            edited_code = edited_code + "'" + str(group_freq) + "'" + "}],"
+
+
+    return(edited_code)
+
+
+
+
+
+data = readXML('test-format-3.xml')
 
 traduction(data)

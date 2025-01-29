@@ -230,4 +230,4 @@ for (let i = 0; i < Cases.length; i++) {
 
 
 
-events = {'2025-01-24':[{lieu:'place2',activite:'un autre exemple'}],'2025-01-23':[{lieu:'Place',activite:'un exemple'}],'2025-01-26':[{lieu:'place2',activite:'exemple3'}]}
+events = {'2025-01-24':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-01-31':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-02-07':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-02-14':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-01-23':[{lieu:'Place',activite:'un exemple',freq:'1'}],'2025-01-26':[{lieu:'place2',activite:'exemple3',freq:'2'}],}
