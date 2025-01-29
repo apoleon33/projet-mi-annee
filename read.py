@@ -79,11 +79,11 @@ def traduction(data):
     for i in range(len(data)):
         if  data[i].Type == 'Titre' :
             liste_titre.append([])
-            liste_titre[i-1].append(data[i])
+            liste_titre[len(liste_titre)-1].append(data[i])
             for y in range(len(data[i].Target)):
                 for x in range(len(data)):
                     if data[i].Target[y] == data[x].ID:
-                        liste_titre[i-1].append([data[x].Type,data[x].Content])
+                        liste_titre[len(liste_titre)-1].append([data[x].Type,data[x].Content])
 
     print(liste_titre)
     edited_code = 'events = {'
@@ -108,12 +108,12 @@ def traduction(data):
     with open('mydirectory/code.js', 'r') as file:
         data2 = file.readlines()
 
-    data2[262] = edited_code
+    data2[232] = edited_code
 
     with open('mydirectory/code.js', 'w') as file:
         file.writelines(data2)
 
 
-data = readXML('test-format-2.xml')
+data = readXML('test-format-2(1).xml')
 
 traduction(data)

@@ -171,40 +171,6 @@ function setTodaySelection() {
 }
 
 
-
-function generateTable(columns) {
-    const headerRow = document.getElementById('headerRow');
-    const dataRow = document.getElementById('dataRow');
-
-    // Vider les anciennes colonnes
-    headerRow.innerHTML = '';
-    dataRow.innerHTML = '';
-
-    // Créer les nouvelles colonnes
-    for (let i = 1; i <= columns; i++) {
-        const th = document.createElement('th');
-        th.textContent = `Colonne ${i}`;
-        headerRow.appendChild(th);
-
-        const td = document.createElement('td');
-        td.textContent = `Donnée ${i}`;
-        dataRow.appendChild(td);
-    }
-}
-
-function updateTable() {
-    const colCount = parseInt(document.getElementById('colCount').value, 10);
-    
-    // Générer le tableau avec le nouveau nombre de colonnes
-    generateTable(colCount);
-}
-
-// Ajouter un événement au bouton
-document.getElementById('updateTable').addEventListener('click', updateTable);
-
-// Génération initiale du tableau
-generateTable(3);
-
 // Stockage des événements
 let events = {};
 
@@ -226,20 +192,21 @@ function addEvent() {
     events[date].push({ lieu, activite });
     displayEvents(date);
 }
-// Affichage des événements
+
+// Affichage des événements sans casser le calendrier
 function displayEvents(dateKey) {
-    const eventContainer = document.getElementById("eventList");
-    eventContainer.innerHTML = "";
+    const eventListContainer = document.getElementById("eventList");
+    eventListContainer.innerHTML = `<h3>Événements du ${dateKey}</h3>`;
 
     if (events[dateKey]) {
         events[dateKey].forEach((event, index) => {
             let eventItem = document.createElement("div");
             eventItem.innerHTML = `<strong>${event.lieu}</strong> - ${event.activite}
             <button onclick="deleteEvent('${dateKey}', ${index})">❌</button>`;
-            eventContainer.appendChild(eventItem);
+            eventListContainer.appendChild(eventItem);
         });
     } else {
-        eventContainer.innerHTML = "Aucun événement pour cette journée.";
+        eventListContainer.innerHTML += "<p>Aucun événement pour cette journée.</p>";
     }
 }
 
@@ -260,6 +227,7 @@ for (let i = 0; i < Cases.length; i++) {
     });
 }
 
-events = {'2025-01-24':[{lieu:'place2',activite:'un autre exemple'}],'2025-01-23':[{lieu:'Place',activite:'un exemple'}]}
 
 
+
+events = {'2025-01-24':[{lieu:'place2',activite:'un autre exemple'}],'2025-01-23':[{lieu:'Place',activite:'un exemple'}],'2025-01-26':[{lieu:'place2',activite:'exemple3'}]}
