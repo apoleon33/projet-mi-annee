@@ -92,22 +92,22 @@ def traduction(data):
     edited_code = 'events = {'
     for i in range(len(liste_titre)):
 
-        for y in range(len(liste_titre[0])-1):
+        for y in range(len(liste_titre[i])-1):
          if liste_titre[i][y+1][0] == 'date':
             edited_code = edited_code +"'"+ liste_titre[i][y+1][1]+"'" + ":[{lieu:"
             date = liste_titre[i][y+1][1]
-        for y in range(len(liste_titre[0]) - 1):
+        for y in range(len(liste_titre[i]) - 1):
          if liste_titre[i][y+1][0] == 'Lieu':
             edited_code = edited_code + "'"+ liste_titre[i][y+1][1] +"'"+ ",activite:"
             lieu = liste_titre[i][y+1][1]
-        for y in range(len(liste_titre[0]) - 1):
+        for y in range(len(liste_titre[i]) - 1):
          if liste_titre[i][y+1][0] == 'dsc':
             edited_code = edited_code +"'"+ liste_titre[i][y+1][1] +"'"+ ",freq:"
             dsc = liste_titre[i][y+1][1]
-        for y in range(len(liste_titre[0]) - 1):
-         if liste_titre[i][y+1][0] == 'freq':
 
-            edited_code = edited_code + "'" + str(group_freq) + "'" + "}],"
+        edited_code = edited_code + "'" + str(group_freq) + "'" + "}],"
+        for y in range(len(liste_titre[i]) - 1):
+         if liste_titre[i][y+1][0] == 'freq':
             edited_code = freq_function(liste_titre[i][y+1][1], edited_code, date, lieu, dsc, group_freq)
             group_freq = group_freq + 1
 
