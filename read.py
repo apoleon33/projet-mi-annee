@@ -181,3 +181,4 @@ def freq_function(freq, edited_code, date, lieu, desc, group_freq):
 data = readXML('test-format-3.xml')
 
 traduction(data)
+
