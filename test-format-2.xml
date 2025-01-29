@@ -22,14 +22,14 @@
     <task id="Activity_1hlz756" name="Lieu: Place">
       <incoming>Flow_03cqz4y</incoming>
     </task>
-    <task id="Activity_05a6b45" name="date: 00/00/0000">
+    <task id="Activity_05a6b45" name="date: 2025-01-23">
       <incoming>Flow_13wtt4x</incoming>
     </task>
     <sequenceFlow id="Flow_03cqz4y" sourceRef="Activity_0tmtmpe" targetRef="Activity_1hlz756" />
     <sequenceFlow id="Flow_13wtt4x" sourceRef="Activity_0tmtmpe" targetRef="Activity_05a6b45" />
     <sequenceFlow id="Flow_11bkr9a" sourceRef="Task_1hcentk" targetRef="Activity_1wh4scj" />
     <sequenceFlow id="Flow_1f26nwh" sourceRef="Task_1hcentk" targetRef="Activity_0tmtmpe" />
-    <task id="Activity_161i7mv" name="dsc: c&#39;est un exemple">
+    <task id="Activity_161i7mv" name="dsc:un exemple">
       <incoming>Flow_0a7ifvl</incoming>
     </task>
     <sequenceFlow id="Flow_0a7ifvl" sourceRef="Activity_0tmtmpe" targetRef="Activity_161i7mv" />
@@ -40,7 +40,7 @@
     <task id="Activity_0sfkmbs" name="Lieu: place2">
       <incoming>Flow_1gtugzl</incoming>
     </task>
-    <task id="Activity_081gt53" name="date: 01/00/0000">
+    <task id="Activity_081gt53" name="date: 2025-01-24">
       <incoming>Flow_0kgb1vr</incoming>
     </task>
     <task id="Activity_0ylcpj7" name="dsc: un autre exemple">
@@ -58,6 +58,10 @@
     <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Process_1">
       <bpmndi:BPMNShape id="Task_1hcentk_di" bpmnElement="Task_1hcentk">
         <omgdc:Bounds x="330" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1wh4scj_di" bpmnElement="Activity_1wh4scj">
+        <omgdc:Bounds x="330" y="370" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0tmtmpe_di" bpmnElement="Activity_0tmtmpe">
@@ -78,10 +82,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1cdcd2m_di" bpmnElement="Activity_1cdcd2m">
         <omgdc:Bounds x="770" y="440" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1wh4scj_di" bpmnElement="Activity_1wh4scj">
-        <omgdc:Bounds x="330" y="370" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0sfkmbs_di" bpmnElement="Activity_0sfkmbs">
