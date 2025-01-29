@@ -169,6 +169,25 @@ def freq_function(freq, edited_code, date, lieu, desc, group_freq):
             edited_code = edited_code + "'" + desc + "'" + ",freq:"
             edited_code = edited_code + "'" + str(group_freq) + "'" + "}],"
 
+    if j_s_m == 'j':
+
+
+        for i in range(int(N)):
+            date[2] = int(date[2]) + 1
+            if int(date[2]) > 31:
+                date[1] = int(date[1]) + 1
+                date[2] = int(date[2]) - 31
+            if int(date[2]) < 10:
+                date[2] = str("0") + str(date[2])
+            if int(date[1]) <10:
+                date[1] = str("0") + str(int(date[1]))
+
+
+            edited_code = edited_code + "'" + str(date[0]) + "-" + str(date[1]) + "-"+ str(date[2]) + "'" + ":[{lieu:"
+            edited_code = edited_code + "'" + lieu + "'" + ",activite:"
+            edited_code = edited_code + "'" + desc + "'" + ",freq:"
+            edited_code = edited_code + "'" + str(group_freq) + "'" + "}],"
+
 
 
 
