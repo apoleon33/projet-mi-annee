@@ -138,7 +138,6 @@ def freq_function(freq, edited_code, date, lieu, desc, group_freq):
 
 
         for i in range(int(N)):
-            print(date)
             date[2] = int(date[2]) + 7
             if int(date[2]) > 31:
                 date[1] = int(date[1]) + 1
@@ -153,6 +152,24 @@ def freq_function(freq, edited_code, date, lieu, desc, group_freq):
             edited_code = edited_code + "'" + lieu + "'" + ",activite:"
             edited_code = edited_code + "'" + desc + "'" + ",freq:"
             edited_code = edited_code + "'" + str(group_freq) + "'" + "}],"
+
+    if j_s_m == 'm':
+
+        for i in range(int(N)-1):
+            date[1] = int(date[1]) + 1
+            if int(date[1]) > 12:
+                date[0] = int(date[0]) + 1
+                date[1] = int(date[1]) - 11
+            if int(date[1]) <10:
+                date[1] = str("0") + str(int(date[1]))
+
+
+            edited_code = edited_code + "'" + str(date[0]) + "-" + str(date[1]) + "-"+ str(date[2]) + "'" + ":[{lieu:"
+            edited_code = edited_code + "'" + lieu + "'" + ",activite:"
+            edited_code = edited_code + "'" + desc + "'" + ",freq:"
+            edited_code = edited_code + "'" + str(group_freq) + "'" + "}],"
+
+
 
 
     return(edited_code)
