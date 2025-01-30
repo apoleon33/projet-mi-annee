@@ -118,7 +118,7 @@ def traduction(data):
     with open('mydirectory/code.js', 'r') as file:
         data2 = file.readlines()
 
-    data2[232] = edited_code
+    data2[261] = edited_code
 
     with open('mydirectory/code.js', 'w') as file:
         file.writelines(data2)
@@ -155,7 +155,7 @@ def freq_function(freq, edited_code, date, lieu, desc, group_freq):
 
     if j_s_m == 'm':
 
-        for i in range(int(N)-1):
+        for i in range(int(N)):
             date[1] = int(date[1]) + 1
             if int(date[1]) > 12:
                 date[0] = int(date[0]) + 1

@@ -179,8 +179,9 @@ function addEvent() {
     let date = document.getElementById("eventDate").value;
     let lieu = document.getElementById("eventLieu").value;
     let activite = document.getElementById("eventActivite").value;
+    let freq = document.getElementById("eventFreq").value;
 
-    if (!date || !lieu || !activite) {
+    if (!date || !lieu || !activite || freq === "") {
         alert("Veuillez remplir tous les champs.");
         return;
     }
@@ -189,14 +190,17 @@ function addEvent() {
         events[date] = [];
     }
 
-    events[date].push({ lieu, activite });
+    events[date].push({ lieu, activite, freq });
     displayEvents(date);
 }
 
-// Affichage des événements sans casser le calendrier
+// Affichage des événements en tenant compte des groupes de fréquence
 function displayEvents(dateKey) {
     const eventListContainer = document.getElementById("eventList");
     eventListContainer.innerHTML = `<h3>Événements du ${dateKey}</h3>`;
+
+    let selectedEvents = [];
+    let freqGroup = new Set();
 
     if (events[dateKey]) {
         events[dateKey].forEach((event, index) => {
@@ -204,8 +208,33 @@ function displayEvents(dateKey) {
             eventItem.innerHTML = `<strong>${event.lieu}</strong> - ${event.activite}
             <button onclick="deleteEvent('${dateKey}', ${index})">❌</button>`;
             eventListContainer.appendChild(eventItem);
+
+            // Ajouter la fréquence au groupe
+            freqGroup.add(event.freq);
         });
-    } else {
+    }
+
+    // Affichage des événements du même groupe de fréquence
+    let recurringSection = document.createElement("div");
+    recurringSection.innerHTML = `<h4>Événements du même groupe</h4>`;
+    let hasRecurringEvents = false;
+
+    Object.keys(events).forEach(date => {
+        events[date].forEach(event => {
+            if (freqGroup.has(event.freq) && date !== dateKey) {
+                let eventItem = document.createElement("div");
+                eventItem.innerHTML = `<strong>${event.lieu}</strong> - ${event.activite} (Date: ${date})`;
+                recurringSection.appendChild(eventItem);
+                hasRecurringEvents = true;
+            }
+        });
+    });
+
+    if (hasRecurringEvents) {
+        eventListContainer.appendChild(recurringSection);
+    }
+
+    if (!events[dateKey] || events[dateKey].length === 0) {
         eventListContainer.innerHTML += "<p>Aucun événement pour cette journée.</p>";
     }
 }
@@ -230,4 +259,4 @@ for (let i = 0; i < Cases.length; i++) {
 
 
 
-events = {'2025-01-24':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-01-31':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-02-07':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-02-14':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-01-23':[{lieu:'Place',activite:'un exemple',freq:'1'}],'2025-02-23':[{lieu:'Place',activite:'un exemple',freq:'1'}],'2025-03-23':[{lieu:'Place',activite:'un exemple',freq:'1'}],'2025-04-23':[{lieu:'Place',activite:'un exemple',freq:'1'}],'2025-01-26':[{lieu:'place2',activite:'exemple3',freq:'2'}],'2025-02-26':[{lieu:'place2',activite:'exemple3',freq:'2'}],'2025-03-26':[{lieu:'place2',activite:'exemple3',freq:'2'}],'2025-04-26':[{lieu:'place2',activite:'exemple3',freq:'2'}],}
+events = {'2025-01-24':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-01-31':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-02-07':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-02-14':[{lieu:'place2',activite:'un autre exemple',freq:'0'}],'2025-01-23':[{lieu:'Place',activite:'un exemple',freq:'1'}],'2025-02-23':[{lieu:'Place',activite:'un exemple',freq:'1'}],'2025-03-23':[{lieu:'Place',activite:'un exemple',freq:'1'}],'2025-04-23':[{lieu:'Place',activite:'un exemple',freq:'1'}],'2025-05-23':[{lieu:'Place',activite:'un exemple',freq:'1'}],'2025-01-26':[{lieu:'place2',activite:'exemple3',freq:'2'}],'2025-02-26':[{lieu:'place2',activite:'exemple3',freq:'2'}],'2025-03-26':[{lieu:'place2',activite:'exemple3',freq:'2'}],'2025-04-26':[{lieu:'place2',activite:'exemple3',freq:'2'}],'2025-05-26':[{lieu:'place2',activite:'exemple3',freq:'2'}],}
