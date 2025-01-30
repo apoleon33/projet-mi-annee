@@ -265,9 +265,13 @@ const displayRedDot = () => {
         if (Cases[i].innerText !== "") { // on évite les cases vides
             let parsableDate = `${year}-${month}-${Cases[i].innerText}`
             Object.keys(events).forEach(date => {
+                console.log("huh")
                 let formattedDate = new Date(date)
                 let parsedDate = new Date(parsableDate)
-                if (parsedDate.getTime() === formattedDate.getTime()) {
+                if (Cases[i].innerText === "23") console.log(formattedDate.getDate(), parsedDate.getDate())
+                // condition ignoble
+                if (formattedDate.getFullYear() === parsedDate.getFullYear() && formattedDate.getMonth() === parsedDate.getMonth() && formattedDate.getDate() === parsedDate.getDate()) {
+                    console.log(parsedDate.getTime(), formattedDate.getTime())
                     let redDot = document.createElement("div")
 
                     redDot.style.width = "10px"
@@ -278,6 +282,7 @@ const displayRedDot = () => {
                     redDot.style.borderRadius = "100%"
                     redDot.style.backgroundColor = "#e64553"//"#FE5800"
 
+                    console.log(redDot)
                     Cases[i].style.position = "relative"
                     Cases[i].appendChild(redDot)
                 }
