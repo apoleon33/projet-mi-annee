@@ -68,7 +68,7 @@ def cell_fetch(id,list):               #algo de recherche de cellules avec une I
     return 0
 
 
-def traduction(data):
+def traduction(data):                               #traduit les data du xmls
     dir_path = os.path.dirname(os.path.realpath(__file__))
     group_freq = 0
     try:
@@ -92,7 +92,7 @@ def traduction(data):
     edited_code = 'events = {'
     for i in range(len(liste_titre)):
 
-        for y in range(len(liste_titre[i])-1):
+        for y in range(len(liste_titre[i])-1):                              #creation du code injecté dans le js
          if liste_titre[i][y+1][0] == 'date':
             edited_code = edited_code +"'"+ liste_titre[i][y+1][1]+"'" + ":[{lieu:"
             date = liste_titre[i][y+1][1]
@@ -105,7 +105,7 @@ def traduction(data):
             edited_code = edited_code +"'"+ liste_titre[i][y+1][1] +"'"+ ",freq:"
             dsc = liste_titre[i][y+1][1]
 
-        edited_code = edited_code + "'" + str(group_freq) + "'" + "}],"
+        edited_code = edited_code + "'" + str(group_freq) + "'" + "}],"           #check des recurences
         for y in range(len(liste_titre[i]) - 1):
          if liste_titre[i][y+1][0] == 'freq':
             edited_code = freq_function(liste_titre[i][y+1][1], edited_code, date, lieu, dsc, group_freq)
@@ -118,7 +118,7 @@ def traduction(data):
     with open('mydirectory/code.js', 'r') as file:
         data2 = file.readlines()
 
-    data2[261] = edited_code
+    data2[-1] = edited_code
 
     with open('mydirectory/code.js', 'w') as file:
         file.writelines(data2)
@@ -194,7 +194,7 @@ def freq_function(freq, edited_code, date, lieu, desc, group_freq):
     return(edited_code)
 
 
-data = readXML('test-format-3.xml')
+data = readXML('test-format-4.xml')
 
 traduction(data)
 
