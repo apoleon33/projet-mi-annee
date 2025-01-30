@@ -5,7 +5,7 @@ let year = date.getFullYear();
 let month = date.getMonth() + 1;
 let day = date.getDate();
 
-const monthName = ["janvier", "février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+const monthName = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
 
 const UP_MONTH = 'upMonth'
 const DOWN_MONTH = 'downMonth'
@@ -16,22 +16,23 @@ function CALENDRIER_REDUCER(action) {
             if (month < 12) month++
             else {
                 year++
-                month=1
+                month = 1
             }
             break;
 
-        case DOWN_MONTH: 
+        case DOWN_MONTH:
             if (month > 1) month--
             else {
                 year--
-                month=12
+                month = 12
             }
             break;
-        
+
         default:
             break;
     }
-    calendrier(year,month)
+    calendrier(year, month)
+    displayRedDot()
 }
 
 document.getElementById('avant').onclick = function () {
@@ -47,7 +48,7 @@ document.getElementById('apres').onclick = function () {
 
 function calendrier(year, month) {
     const monthNb = month + 12 * (year - 2020);
-    let cld = [{ dayStart: 2, length: 31, year: 2020, month: "janvier" }];
+    let cld = [{dayStart: 2, length: 31, year: 2020, month: "janvier"}];
 
     for (let i = 0; i < monthNb - 1; i++) {
         let yearSimulé = 2020 + Math.floor(i / 12);
@@ -87,12 +88,14 @@ function calendrier(year, month) {
 
     document.getElementById('cldT').innerText =
         cld[cld.length - 1].month.toLocaleUpperCase() + " " + cld[cld.length - 1].year;
-}calendrier(year, month);
 
+}
+
+calendrier(year, month);
 
 
 function getFévrierLength(year) {
-    if (year%4 === 0) return 29
+    if (year % 4 === 0) return 29
     else return 28
 }
 
@@ -123,17 +126,15 @@ function selectToday() {
             Cases[i].classList.add("selected"); // Marque la date du jour
         }
     }
+    displayRedDot() // afficher les notifications pour les bons jours
 }
 
 // Exécute la sélection de la date du jour une fois le calendrier chargé
-setTimeout(selectToday, 100);
-
-
-
+setTimeout(selectToday, 100)
 
 
 // Fonction pour afficher les événements sous forme de tableau
-function displayEvents(dateKey) {A
+function displayEvents(dateKey) {
     const eventTableBody = document.getElementById("eventContent");
     eventTableBody.innerHTML = ""; // Nettoie le tableau
 
@@ -190,7 +191,7 @@ function addEvent() {
         events[date] = [];
     }
 
-    events[date].push({ lieu, activite, freq });
+    events[date].push({lieu, activite, freq});
     displayEvents(date);
 }
 
@@ -256,7 +257,33 @@ for (let i = 0; i < Cases.length; i++) {
     });
 }
 
+// On affiche une pastille les jours ou il y a un event
+const displayRedDot = () => {
+    // On fait comme dans [selectToday]
+    // On parcours chaques cases, et regarde si un évènements
+    for (let i = 0; i < Cases.length; i++) {
+        if (Cases[i].innerText !== "") { // on évite les cases vides
+            let parsableDate = `${year}-${month}-${Cases[i].innerText}`
+            Object.keys(events).forEach(date => {
+                let formattedDate = new Date(date)
+                let parsedDate = new Date(parsableDate)
+                if (parsedDate.getTime() === formattedDate.getTime()) {
+                    let redDot = document.createElement("div")
 
+                    redDot.style.width = "10px"
+                    redDot.style.height = "10px"
+                    redDot.style.position = "absolute"
+                    redDot.style.top = "5px"
+                    redDot.style.right = "5px"
+                    redDot.style.borderRadius = "100%"
+                    redDot.style.backgroundColor = "#e64553"//"#FE5800"
 
+                    Cases[i].style.position = "relative"
+                    Cases[i].appendChild(redDot)
+                }
+            })
+        }
+    }
+}
 
-//
+// Ce commentaire sera remplacé par le code généré
